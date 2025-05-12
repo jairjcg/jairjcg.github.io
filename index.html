@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda de Componentes PC</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f3f3f3; }
+    header { background: #222; color: white; padding: 15px 20px; text-align: center; }
+    nav {background-color: #444; padding: 10px; text-align: center; }
+    nav {color: white; margin: 0 15px; text-decoration: none; }
+    .search-bar { margin: 20px; text-align: center; }
+    .search-bar inpunt {padding: 10px; width: 80%; max-width: 400px; border-radius: 5px; border: 1px solid #ccc; }
+    .categories { text-align: center; margin: 20px 0; }
+    .categories a { margin: 0 10px; text-decoration: none; color: #ffffff; }
+    .container { padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; }
+    .product, .cart { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0,0,0.1); }
+    .product { width: 200px; }
+    .cart { position: fixed; top: 200px; right: 10px; width: 300px; }
+    .img { position: fixed; top: 900px; letf: 10px; width: 300px; }
+    .imgen { position: fixed; top: 20px; right: 100px; width: 300px; }
+    .imgen2 { position: fixed; top: 20px; right: 1px; width: 300px; }
+    .imgen3 { position: fixed; top: 20px; right: 1500px; width: 300px; }
+    .video { position: fixed; top: 700px; right: 850px; width: 300px; }
+    .product img { max-width: 100%; border-radius: 5px; }
+    button { background: #3498db; color: white; border: none; padding: 10px; cursor: pointer; margin-top: 10px; width: 100%; }
+    button:hover { background: #2980b9; }
+    button { background-color, red;
+    color: white;
+    border-radius: 10pc;
+    }
+    
+    #chatBox {
+      position: fixed; bottom: 0; right: 20px; width: 300px; background: white;
+      border: 1px solid #ccc; border-radius: 10px 10px 0 0;
+    }
+    #chatMessages { max-height: 200px; overflow-y: auto; padding: 10px; }
+    #chatInput { width: 80%; padding: 10px; border: none; }
+    #sendBtn { width: 20%; padding: 10px; border: none; background: #2ecc71; color: white; }
+
+    body {
+       background-image: url(https://img.freepik.com/vector-gratis/fondo-escritorio-moderno-vector-diseno-azul-geometrico_53876-135923.jpg?semt=ais_hybrid&w=740);
+       }
+    .btn-1{
+     }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Data Assist</h1>
+  <p>Tu tienda de tecnologia favorita ya esta aqui</p>
+</header>
+
+
+<nav>
+    <a href="#">Inicio</a>
+    <a href="https://www.amazon.com/s?k=componentes+de+computadora&i=computers-intl-ship&__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1FO076DRWUNB7&sprefix=componentes+de+computadora%2Ccomputers-intl-ship%2C123">Productos</a>
+    <a href="#">servicio</a>
+    <a target="_blanck" href="https://www.amazon.com/-/es/gp/cart/view.html?ref_=nav_cart">Carrito</a>
+    <a target="_blanck" href="https://www.youtube.com/watch?v=axeokzULY0A&ab_channel=christianvargas">Que es un Blog</a>
+    <a target="_blanck" href="https://dataassistcorporation.blogspot.com/?m=1">Blog</a>
+</nav>
+
+<div class="search-bar">
+    <input type="text" id="search" placeholder="Buscar productos...">
+</div>
+
+<div class="categories">
+    <a target="_blanck" href="https://www.amazon.com/s?k=tarjetas+graficas&__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2BOS0618PZDAS&sprefix=tarjetas+graficas%2Caps%2C128">Tarjetas Gráficas</a>
+    <a target="_blanck" href="https://www.amazon.com/s?k=procesadores&__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=35O22YGRO8GY8&sprefix=procesadores+%2Caps%2C133&ref=nb_sb_noss_2">Procesadores</a>
+    <a target="_blanck" href="https://www.amazon.com/s?k=memoria+ram&__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=36FN4NRPQO4M0&sprefix=memoria+ram+%2Caps%2C132&ref=nb_sb_noss_2">Memorias RAM</a>
+    <a target="_blanck" href="https://www.amazon.com/s?k=placa+madre&crid=3P919XNOV814M&sprefix=placa+%2Caps%2C136&ref=nb_sb_ss_ts-doa-p_1_6">Placas Base</a>
+    <a target="_blanck" href="https://www.amazon.com/s?k=almacenamiento+para+pc&crid=7HBL0LE35B0O&sprefix=almacenamiento%2Caps%2C138&ref=nb_sb_ss_ts-doa-p_1_14">Almacenamiento</a>
+    <a target="_blanck" href="#">Servicio tecnico</a>
+</div>
+
+<div class="container" id="products">
+  <!-- Productos -->
+</div>
+
+
+<div class="cart" id="cart">
+  <h3>Carrito</h3>
+  <ul id="cartItems"></ul>
+  <p>Total: $<span id="total">0</span></p>
+  <button onclick="checkout()">Comprar</button>
+</div>
+
+<div id="chatBox">
+  <div id="chatMessages"></div>
+  <input type="text" id="chatInput" placeholder="¿En qué puedo ayudarte?">
+  <button id="sendBtn">Enviar</button>
+</div>
+
+<script>
+  const products = [
+    { id: 1, name: "Procesador Ryzen 5 5600X", price: 210, image: "https://m.media-amazon.com/images/I/61vGQNUEsGL._AC_UF894,1000_QL80_.jpg" },
+    { id: 2, name: "Tarjeta Gráfica RTX 3060", price: 350, image: "https://m.media-amazon.com/images/I/71tduSp8ooL.jpg" },
+    { id: 3, name: "Memoria RAM 16GB DDR4", price: 80, image: "https://m.media-amazon.com/images/I/61EBMTIL+nL._AC_UF894,1000_QL80_.jpg" },
+    { id: 4, name: "SSD NVMe 1TB", price: 120, image: "https://m.media-amazon.com/images/I/61ChhVZZMRL._AC_UF894,1000_QL80_.jpg" },
+    { id: 5, name: "Asus TUF Gaming B650", price: 200, image: "https://m.media-amazon.com/images/I/81ogi-krqkL._AC_UF1000,1000_QL80_.jpg" },
+    { id: 6, name: "Servicio Tecnico", price: 20, image: "https://thumbs.dreamstime.com/b/servicios-de-reparaci%C3%B3n-computadoras-soporte-t%C3%A9cnico-mantenimiento-servicio-pc-con-tecnolog%C3%ADa-hardware-para-port%C3%A1tiles-235120884.jpg" },
+    { id: 7, name: "Fuente de Poder Cooler Master MWE Gold 850", price: 104, image: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTxfaR0LAjdK-pqWssLazt-QKgpW7ix6HZ1VHsGraxnc3G9B_mW5H5OiUDHI313ZaBQx49sqQFQv8jBL5E_0OxkMLqApb8OyopxsOTBxU9Hg0s3FPYb1tGM64V3xssPLRGPIJfKhNc&usqp=CAc" }
+  ];
+
+  const cart = [];
+
+  function renderProducts() {
+    const container = document.getElementById("products");
+    products.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h5>${p.name}</h5>
+        <p>Precio: $${p.price}</p>
+        <button onclick="addToCart(${p.id})">Agregar al carrito</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    cart.push(product);
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+    let total = 0;
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item.name + " - $" + item.price;
+      cartItems.appendChild(li);
+      total += item.price;
+    });
+    document.getElementById("total").textContent = total;
+  }
+
+  function checkout() {
+    alert("Gracias por su compra. Procesando pedido...");
+    cart.length = 0;
+    updateCart();
+  }
+
+  // Chat simulado
+  const chatMessages = document.getElementById("chatMessages");
+  const chatInput = document.getElementById("chatInput");
+
+  document.getElementById("sendBtn").onclick = () => {
+    const msg = chatInput.value;
+    if (!msg) return;
+    chatMessages.innerHTML += `<div><strong>Tú:</strong> ${msg}</div>`;
+    chatInput.value = "";
+
+    // Simulación de respuesta IA
+    setTimeout(() => {
+      let reply = "Lo Siento. ¿Podrías repetir?";
+      if (msg.toLowerCase().includes("envio")) reply = "Los envíos se procesan en 24 horas.";
+      if (msg.toLowerCase().includes("precio")) reply = "Todos los precios están actualizados.";
+      if (msg.toLowerCase().includes("ubicados")) reply = "estamos ubicados en barranquilla.";
+      if (msg.toLowerCase().includes("hola")) reply = "hola,soy Magaly en que puedo ayudarte.";
+      if (msg.toLowerCase().includes("christian")) reply = "christian es gay si un hombre homosexual.";
+      
+
+      if (msg.toLowerCase().includes("seguro")) reply = "todos nuestros productos son seguro,somos grandes Aliado de amazon.";
+      if (msg.toLowerCase().includes("servicios")) reply = "Todos nuestros servicios tecnico son presencial y si desea un asesoramiento puede comunicarse por la linea de WhatsApp.";
+      chatMessages.innerHTML += `<div><strong>IA:</strong> ${reply}</div>`;
+    }, 1000);
+  };
+
+  renderProducts();
+</script>
+
+ <br>
+
+ <br> 
+<div class="img" id="img">
+   <a href="http://wa.me/573023621827?text=Bienvenido al whatsapp de Data Assit escribenos para Poderte ayudar" target="_blank"> <img src="https://images.icon-icons.com/2972/PNG/512/whatsapp_logo_icon_186881.png" style="width: 50px; height: 50px; "> </a>
+
+<br> 
+<div class="imgen" id="imgen">
+   <a href="#"> <img src="img/logojair.png" style="width: 100px; height: 100px; "> </a>
+
+<br> 
+<div class="imgen2" id="imgen2">
+   <a href="#"> <img src="img/logo2.jpg" style="width: 100px; height: 100px; "> </a>
+    </div>
+
+<br> 
+<div class="imgen3" id="imgen3">
+   <a href="#"> <img src="img/imagen3.png" style="width: 300px; height: 100px; "> </a>
+    </div>
+
+<br>
+ <div class="video" id="video">
+   <iframe width="400" height="250" src="https://www.youtube.com/embed/Z6euJB1Adb4?si=NMGy9zYCXrZNJdYk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ </div>
+
+</body>
+</html>
+
+
